@@ -8,6 +8,4 @@
       state: present
       credential_type: Machine
       inputs:
-        ssh_public_key_data: "{{ lookup('file', 'id_rsa') }}"
-
-
+        ssh_public_key_data: "{{ lookup('file', '/tmp/id_rsa') }}"
