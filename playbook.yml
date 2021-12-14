@@ -1,5 +1,11 @@
 ---
-- hosts: all
+- name: Tower credential demo playbook
+  hosts: all
+  vars:
+    my_controller: "192.168.0.106"
+    my_username: "admin"
+    my_password: "redhat"
+    validate_certs: false
   tasks:
   - name: Create a valid Machine credential with Signed SSH Certificate
     ansible.tower.tower_credential:
@@ -9,3 +15,7 @@
       credential_type: Machine
       inputs:
         ssh_public_key_data: "{{ lookup('file', '/tmp/id_rsa') }}"
+      tower_host: "{{ my_controller }}"
+      tower_username: "{{ my_username }}"
+      tower_password: "{{ my_password }}"
+      validate_certs: "{{ validate_certs }}"
