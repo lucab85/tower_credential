@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+  - name: Create a valid Machine credential with Signed SSH Certificate
+    ansible.tower.tower_credential:
+      name: Machine Signed SSH Certificate example
+      organization: Default
+      state: present
+      credential_type: Machine
+      inputs:
+        ssh_public_key_data: "{{ lookup('file', 'id_rsa') }}"
+
+
